@@ -1,0 +1,41 @@
+index.js:2177 Warning: This synthetic event is reused for performance reasons. If you're seeing this,
+you're accessing the property `target` on a released/nullified synthetic event. This is set to null.
+If you must keep the original synthetic event around, use event.persist().
+See https://fb.me/react-event-pooling for more information.
+
+__stack_frame_overlay_proxy_console__ @ index.js:2177
+printWarning @ warning.js:33
+warning @ warning.js:57
+warn @ react-dom.development.js:1798
+get @ react-dom.development.js:1792
+tryCatchStringify @ VM1135:1
+stringify @ VM1135:1
+toContentScript @ VM1135:1
+(anonymous) @ VM1135:2
+invokeFunc @ VM1135:2
+trailingEdge @ VM1135:2
+timerExpired @ VM1135:2
+setTimeout (async)
+debounced @ VM1135:2
+handleChange @ VM1135:1
+dispatch @ createStore.js:173
+dispatch @ VM1135:2
+(anonymous) @ index.js:14
+dispatch @ VM1135:2
+(anonymous) @ bindActionCreators.js:3
+callCallback @ react-dom.development.js:542
+invokeGuardedCallbackDev @ react-dom.development.js:581
+invokeGuardedCallback @ react-dom.development.js:438
+invokeGuardedCallbackAndCatchFirstError @ react-dom.development.js:452
+executeDispatch @ react-dom.development.js:836
+executeDispatchesInOrder @ react-dom.development.js:858
+executeDispatchesAndRelease @ react-dom.development.js:956
+executeDispatchesAndReleaseTopLevel @ react-dom.development.js:967
+forEachAccumulated @ react-dom.development.js:935
+processEventQueue @ react-dom.development.js:1112
+runEventQueueInBatch @ react-dom.development.js:3607
+handleTopLevel @ react-dom.development.js:3616
+handleTopLevelImpl @ react-dom.development.js:3347
+batchedUpdates @ react-dom.development.js:11082
+batchedUpdates @ react-dom.development.js:2330
+dispatchEvent @ react-dom.development.js:3421

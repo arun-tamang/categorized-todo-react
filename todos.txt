@@ -1,0 +1,23 @@
+reduce all components to stateless.
+only use refresh tokens in header if you want to refresh.
+display message when login fails.
+user session storage and only set accesstoken in header.
+show wrong email or password error by first sending error from backend and catching it in
+front end.
+Currently add from sets value only on change if you put value and add todo, and again press add
+without modifying present todo. So like in search you need extra state variables to store new add
+title.
+Do something for when refreshToken expires.
+Add status flags: isFetching, isSearching, isEditing, isDeleting. (or waitingForResponse flag).
+make tags dynamic in backend.
+how will you do pagination with search ? (onclick of page nos. should now request different url)
+
+
+
+fix this: search when you click search without changing input will send empty keword for search,
+instead of sending current value. This happened when i removed ref and made searchForm stateless.
+I need a way of accessing current value of input field when i click search. I fixed by keeping a
+searchValue in state which get updated on calling onChange of input. But i want a better method
+because this is increasing my code length.
+
+i need to fix search by tags in backend because it returns result from another user also.

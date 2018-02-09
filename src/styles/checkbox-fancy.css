@@ -1,0 +1,45 @@
+input[type='checkbox'].fancy {
+	margin: 0 5px;
+  font-size: 30px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1em;
+	height: 0.5em;
+	background: #f4dde8;
+  border-radius: 3em;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	vertical-align: middle;
+}
+
+input[type='checkbox'].fancy:checked {
+  background: #0ebeff;
+}
+
+input[type='checkbox'].fancy:after {
+  position: absolute;
+  content: '';
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  left: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type='checkbox'].fancy:checked:after {
+  left: calc(100% - 0.5em);
+}
+
+.box_2 {
+  background: #666;
+}

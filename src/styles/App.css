@@ -1,0 +1,279 @@
+.App {
+  position: relative;
+  width: 100%;
+}
+
+/* .delete-todo:hover {
+  background-color: crimson;
+} */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.todo-header {
+  background: #ddd6f3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #faaca8, #ddd6f3);
+  background: linear-gradient(to right, #faaca8, #ddd6f3);
+  padding: 0.4em 0.5em;
+  color: white;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.todos-container {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.26);
+  width: 100%;
+  margin: 4em auto;
+  margin-top: 0em;
+  padding: 0;
+  background: rgb(238, 238, 238);
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo {
+  background: white;
+  min-height: 2em;
+  padding: 0 0 0 10px;
+  line-height: 2em;
+  font-size: 1.5em;
+  color: #68495e;
+  word-wrap: break-word;
+}
+
+.todo:nth-child(2n) {
+  background: rgb(238, 238, 238);
+}
+
+.slide {
+  width: 0px;
+  transition: 0.3s linear;
+  /*Above transition effects all i.e. width and opacity both for our case*/
+  /* display: inline-block; */
+  text-align: center;
+  opacity: 0;
+}
+
+li:hover .slide {
+  /*Select span inside the li which is being hovered.*/
+  width: 35px;
+  opacity: 1;
+}
+
+.search-wrapper {
+  margin: 40px 0;
+  border: 1px solid #a16a8f;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.search-input {
+  display: block;
+  width: 20%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-transition: width 0.4s;
+  transition: width 0.4s;
+}
+
+.search-input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  width: 80%;
+}
+
+.add-wrapper {
+  margin: 5px auto;
+  width: 100%;
+  /* background-color: red; */
+  text-align: center;
+}
+
+.height-transition {
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  min-height: 0;
+}
+
+.height-transition:focus {
+  border-color: #66afe9;
+  outline: 0;
+}
+
+.add-form-input {
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
+}
+
+.add-button-container {
+  width: 100%;
+  text-align: center;
+}
+
+.add-button-container button {
+  border-radius: 50%;
+  background-color: #d61867c7;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0px 2px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  color: #f8d6e9;
+  text-align: center;
+  font-size: 20px;
+  outline: 0;
+}
+
+.add-button-container button:hover {
+  background-color: #a70749c7;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tag-list li {
+  display: inline;
+  margin: 0 16px;
+  font-size: 1.3em;
+}
+
+/* .tag-list-add-form {
+  list-style: none;
+}
+
+.tag-list-add-form li {
+  margin: 0 16px;
+  display: inline;
+  font-size: 1.3em;
+} */
+
+.pagination-container {
+  width: 100%;
+  text-align: center;
+}
+
+/* .pagination {
+  text-align: center;
+} */
+
+.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 8px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination li a {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pagination li a.active {
+}
+
+.pagination a:hover:not(.active) {background-color: #cdeaf1;}
+
+.todo-tags-list {
+  list-style: none;
+  /* background-color: green; */
+  padding-bottom: 4px;
+  line-height: 1.2em;
+  color: #d05f77;
+}
+
+.todo-tags-list i {
+  color: #f64f72;
+  margin-right: 6px;
+}
+
+.todo-tags-list li {
+  display: inline-block;
+  margin: 0 4px;
+  font-size: 0.8em;
+  color: #d05f77;
+  /* background-color: red; */
+}
+
+.todo-tags-list li a {
+  color: #d05f77; 
+  border: 1px solid rgba(214, 162, 194, 0.836);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 4px;
+  border-radius: 16px;
+  box-shadow: 1px 2px;
+  background-color: rgb(253, 239, 241);
+}
+
+.todo-tags-list li a:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.datepicker-container {
+  margin: 8px auto;
+}
+
+.table-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.table-list li {
+  width: 100%;
+  border-bottom: 1px solid;  
+}
+
+.add-category-wrapper {
+  margin: 5px auto;
+  width: 100%;
+  text-align: center;
+}
+
+.add-form-title {
+  color: #aa0440d6;
+  display: inline-block;
+}
+
+.add-form-category-input {
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80%;
+}
+
+.category-container {
+  border-top: 4px solid pink;
+  border-bottom: 4px solid pink;
+}
