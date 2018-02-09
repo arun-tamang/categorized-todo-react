@@ -5,7 +5,7 @@ export function addTodo(userId, todoToAdd) {
   // let tagIds = tags.replace(' ', '').split(',');
 
   return myAxios
-    .put(myUrl, {
+    .post(myUrl, {
       categoryId: todoToAdd.categoryId,
       name: todoToAdd.title,
       tagIds: todoToAdd.tagIds,
