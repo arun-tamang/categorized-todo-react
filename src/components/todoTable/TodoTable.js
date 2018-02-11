@@ -1,11 +1,7 @@
 import React from 'react';
-import TodoRow from './TodoRow';
+import TodoRowContainer from '../../containers/TodoRowContainer';
 
 const TodoTable = (props) => {
-  const handleTitleChange = (title) => {
-    props.setEditValue(title);
-  };
-
   return (
     <table className="table table-striped table-bordered">
       <thead>
@@ -20,7 +16,7 @@ const TodoTable = (props) => {
       </thead>
       <tbody>
         {props.todoProps.map((item, i) => (
-          <TodoRow
+          <TodoRowContainer
             key={item.id}
             id={item.id}
             index={i}
@@ -31,7 +27,7 @@ const TodoTable = (props) => {
             editTitle={props.editTitle}
             tags={item.tags}
             initiateEdit={props.initiateEdit}
-            handleTitleChange={handleTitleChange}
+            handleTitleChange={props.setEditValue}
             enableEdit={item.id === props.todoToEdit ? true : false}
             performEdit={props.performEdit}
             setTodoCompleted={props.setTodoCompleted}

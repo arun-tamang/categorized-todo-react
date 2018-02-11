@@ -1,5 +1,8 @@
 import moment from 'moment';
 
+export const ADD_FORM_MAX_HEIGHT = 60;
+export const ADD_FORM_MIN_HEIGHT = 0;
+
 const setTodoProps = (state, action) => {
   return {
     ...state,
@@ -15,14 +18,17 @@ const setTodoMetaData = (state, action) => {
 };
 
 const addTodo = (todoCategories, action) => {
-  todoCategories[action.payload.categoryIndex].todos.unshift(action.payload.newTodo);
+  let todosCopy = [...todoCategories[action.payload.categoryIndex].todos];
+  todosCopy.unshift(action.payload.newTodo);
+  todoCategories[action.payload.categoryIndex].todos = todosCopy;
 
   return todoCategories;
 };
 
 const editTodo = (todoCategories, action) => {
-  todoCategories[action.payload.categoryIndex].todos[action.payload.todoIndex].name =
-    action.payload.title;
+  let todosCopy = [...todoCategories[action.payload.categoryIndex].todos];
+  todosCopy[action.payload.todoIndex].name = action.payload.title;
+  todoCategories[action.payload.categoryIndex].todos = todosCopy;
 
   return todoCategories;
 };
@@ -58,19 +64,20 @@ const setSearchTags = (state, action) => {
 };
 
 const toggleHeight = (state, action) => {
-  if (state === 0) {
-    return 60;
+  if (state === ADD_FORM_MIN_HEIGHT) {
+    return ADD_FORM_MAX_HEIGHT;
   }
   // console.log('from toggle heigt', state, action);
 
-  return 0;
+  return ADD_FORM_MIN_HEIGHT;
 };
 
 const selectAddForm = (stateCopy, action) => {
   // toggleHeight(state.addFormHeight);
-  stateCopy.addFormHeight = toggleHeight(stateCopy.addFormHeight);
   stateCopy.activeAddTodoFormIndex = action.payload.index;
-  if (!(action.payload.index === action.payload.activeIndex)) {
+  if (action.payload.index !== action.payload.activeIndex) {
+    stateCopy.addFormHeight = ADD_FORM_MAX_HEIGHT;
+  } else {
     stateCopy.addFormHeight = toggleHeight(stateCopy.addFormHeight);
   }
 
