@@ -2,7 +2,7 @@ import React from 'react';
 import TodoTable from './todoTable/TodoTable';
 import { AddTodoForm } from './forms/AddTodo';
 
-export default (props) => {
+const TodoCategory = (props) => {
   return (
     <div className="category-container">
       <h3 className="category-name">Category: {props.name}</h3>
@@ -49,3 +49,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default TodoCategory;

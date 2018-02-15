@@ -1,54 +1,40 @@
-import React from 'react';
+import _ from 'lodash';
+import { compose, pure, withHandlers } from 'recompose';
 import TodoCategory from '../components/TodoCategory';
 import { addTodo } from '../services/todoListService/adderService';
-import _ from 'lodash';
 
-export default class TodoCategoryContainer extends React.PureComponent {
-  // constructor(props) {
-  //   super(props);
-  // }
+const enhance = compose(
+  pure,
+  withHandlers({
+    performEdit: ({ performEdit, categoryIndex }) => (title) => {
+      performEdit(title, categoryIndex);
+    },
+    setTodoCompleted: ({ setTodoCompleted, categoryIndex }) => (isCompleted, todoId) => {
+      setTodoCompleted(isCompleted, todoId, categoryIndex);
+    },
+    changeCompleted: (props) => (isCompleted, todoId) => {
+      props.changeCompleted(isCompleted, todoId, props.categoryIndex);
+    },
+    handleAdd: (props) => () => {
+      let todoToAdd = {
+        ...props.todoToAdd,
+        categoryId: props.categoryId
+      };
 
-  performEdit = (title) => {
-    this.props.performEdit(title, this.props.categoryIndex);
-  };
+      addTodo(props.userId, todoToAdd)
+        .then((response) => {
+          response = _.mapKeys(response, function(value, key) {
+            return _.camelCase(key);
+          });
+          let tags = props.todoToAdd.tagNames.map((item) => ({
+            name: item
+          }));
+          props.addTodo({ ...response, tags }, props.categoryIndex);
+          props.resetTodoToAdd();
+        })
+        .catch((err) => console.log(err));
+    }
+  })
+);
 
-  setTodoCompleted = (isCompleted, todoId) => {
-    this.props.setTodoCompleted(isCompleted, todoId, this.props.categoryIndex);
-  };
-
-  changeCompleted = (isCompleted, todoId) => {
-    this.props.changeCompleted(isCompleted, todoId, this.props.categoryIndex);
-  };
-
-  handleAdd = () => {
-    let todoToAdd = {
-      ...this.props.todoToAdd,
-      categoryId: this.props.categoryId
-    };
-
-    addTodo(this.props.userId, todoToAdd)
-      .then((response) => {
-        response = _.mapKeys(response, function(value, key) {
-          return _.camelCase(key);
-        });
-        let tags = this.props.todoToAdd.tagNames.map((item) => ({
-          name: item
-        }));
-        this.props.addTodo({ ...response, tags }, this.props.categoryIndex);
-        this.props.resetTodoToAdd();
-      })
-      .catch((err) => console.log(err));
-  };
-
-  render() {
-    return (
-      <TodoCategory
-        {...this.props}
-        performEdit={this.performEdit}
-        setTodoCompleted={this.setTodoCompleted}
-        changeCompleted={this.changeCompleted}
-        handleAdd={this.handleAdd}
-      />
-    );
-  }
-}
+export default enhance(TodoCategory);

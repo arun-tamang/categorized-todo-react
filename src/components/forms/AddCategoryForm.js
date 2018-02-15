@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => {
+const AddCategoryForm = (props) => {
   let opacity = props.height === 0 ? 0 : 1;
 
   const handleAddClick = (e) => {
@@ -36,3 +36,5 @@ export default (props) => {
     </form>
   );
 };
+
+export default AddCategoryForm;

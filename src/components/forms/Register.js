@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 const Register = (props) => {
   const { handleSubmit } = props;
+
   return props.authenticated ? (
     <Redirect to='/' />
   ) : (

@@ -315,7 +315,6 @@ export function addCategoryLocally(newCategory) {
 export function addCategory(userId, name) {
   return (dispatch) => {
     SERVICES.addCategory(userId, name).then((result) => {
-      console.log('from addCategory in actionCreators', result);
       dispatch(addCategoryLocally({ ...result, todos: [] }));
       dispatch(resetCategoryToAdd());
     });
